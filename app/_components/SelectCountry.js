@@ -4,8 +4,13 @@ import { getCountries } from "@/app/_lib/data-service";
 
 async function SelectCountry({ defaultCountry, name, id, className }) {
   const countries = await getCountries();
+  const country = countries.objects.map((country) => country.names.common);
+  // console.log(country);
+  console.log(defaultCountry);
   const flag =
-    countries.find((country) => country.name === defaultCountry)?.flag ?? "";
+    countries.objects.find((country) => country.names.common === defaultCountry)
+      ?.flag.url_png ?? "";
+  console.log(flag);
 
   return (
     <select
@@ -16,9 +21,12 @@ async function SelectCountry({ defaultCountry, name, id, className }) {
       className={className}
     >
       <option value="">Select country...</option>
-      {countries.map((c) => (
-        <option key={c.name} value={`${c.name}%${c.flag}`}>
-          {c.name}
+      {countries.objects.map((c) => (
+        <option
+          key={c.names.common}
+          value={`${c.names.common}%${c.flag.url_png}`}
+        >
+          {c.names.common}
         </option>
       ))}
     </select>
