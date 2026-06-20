@@ -29,7 +29,15 @@ function DateSelector({ settings, cabin, bookedDates }) {
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
-        className="pt-8 place-self-center"
+        className="pt-8 place-self-center text-accent-500"
+        classNames={{
+          today: "bg-accent-600 text-accent-100 rounded-full",
+          selected: `bg-accent-600 text-accent-100`, // Highlight the selected day
+          range_start: `rounded-l-2xl text-accent-100`, // Add a border to today's date
+          range_end: `rounded-r-2xl text-accent-100`, // Add a border to today's date
+          range_middle: "bg-accent-600",
+          // nav_buttons: "text-accent-100 bg-accent-600",
+        }}
         mode="range"
         min={minBookingLength + 1}
         max={maxBookingLength}
