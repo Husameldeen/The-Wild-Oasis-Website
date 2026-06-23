@@ -4,7 +4,6 @@ import { useFormStatus } from "react-dom";
 import { updateReservation } from "../_lib/actions";
 
 function UpdateReservationForm({ numGuests, maxCapacity, observations, id }) {
-  const [isPending] = useFormStatus();
   return (
     <form
       action={updateReservation}
